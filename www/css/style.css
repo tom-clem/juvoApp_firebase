@@ -1,0 +1,38 @@
+/* Empty. Add your own CSS if you like */
+.bar-balanced{
+  background-color: #00bbb5 !important;
+}
+
+.item-dark{
+  background-color: #444444 !important;
+}
+/***** h2 ******/
+h2{
+color: #1fa19c;
+
+}
+
+
+/***** Login ******/
+
+.login{
+  line-height: 24px !important;
+  font-size: 22px !important;
+  padding-left: 15px !important;
+  height: 50px !important;
+}
+
+
+
+/***** To-Do ******/
+
+img.checkbox-selector{
+   width:15px;
+   margin:5px;
+   padding-right:5px;
+}
+
+.purchased {
+    color: #9E9E9E;
+    text-decoration: line-through;
+}
