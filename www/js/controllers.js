@@ -9,6 +9,8 @@ example.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
+$scope.user = {};
+
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -45,12 +47,13 @@ example.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
 example.controller('FirebaseCtrl', function($scope, Items, $ionicListDelegate, $state) {
   $scope.items = Items;
-  $scope.checked = false;
+  $scope.checked = $scope.items.checked;
 
   var ref = new Firebase("https://dazzling-torch-81.firebaseio.com");
 ref.onAuth(function(authData) {
   if (authData) {
     console.log("Authenticated with uid:", authData.uid);
+    $scope.user = authData.uid;
   } else {
   $state.go('app.login2');
   }
@@ -60,14 +63,16 @@ ref.onAuth(function(authData) {
     var name = prompt('What do you need to buy?');
     if (name) {
       $scope.items.$add({
-        'name': name
+        'name': name,
+        'checked': false
       });
     }
   };
 
   $scope.purchaseItem = function(item) {
-    var itemRef = new Firebase('https://dazzling-torch-81.firebaseio.com/user1/todos/' + item.$id);
+    var itemRef = new Firebase('https://dazzling-torch-81.firebaseio.com/'+$scope.user+'/todos/' + item.$id);
     $scope.checked = !$scope.checked;
+    
 
     if ($scope.checked) {
       itemRef.child('checked').set('true');
@@ -80,7 +85,7 @@ ref.onAuth(function(authData) {
 
   };
   $scope.deleteTodo = function(item){
-    var deleteTodo = new Firebase('https://dazzling-torch-81.firebaseio.com/user1/todos/' + item.$id);
+    var deleteTodo = new Firebase('https://dazzling-torch-81.firebaseio.com/'+$scope.user+'/todos/' + item.$id);
     deleteTodo.remove();
 
   };

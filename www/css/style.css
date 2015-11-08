@@ -32,7 +32,7 @@ img.checkbox-selector{
    padding-right:5px;
 }
 
-.purchased {
+.checked {
     color: #9E9E9E;
     text-decoration: line-through;
 }

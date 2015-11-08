@@ -61,14 +61,14 @@
 <br><br>
 
   <ion-list class="list " ng-repeat="item in items" >
-<ion-item  class="item item-icon-right" ng-click="purchaseItem(item)" ng-class="{purchased: item.checked == 'false'}">
+<ion-item  class="item item-icon-right" ng-click="purchaseItem(item)" ng-class="{checked: item.checked == 'true'}">
 
 
 
 <h2>{{item.name}}</h2>
 
 
-<i class="icon calm"  ng-class="item.checked == 'false'? 'ion-android-checkbox-outline' : 'ion-android-checkbox-outline-blank'"></i>
+<i class="icon calm"  ng-class="item.checked == 'true'? 'ion-android-checkbox-outline' : 'ion-android-checkbox-outline-blank'"></i>
 <!--<i class="icon positive ion-ios-trash" ng-click="deleteTodo(todo)"></i>
  <button ng-click="deleteTodo(todo)" type="button button-right" class="button button-positive" name="button">Delete item</button>-->
 

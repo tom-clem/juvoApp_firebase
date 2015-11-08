@@ -10,8 +10,24 @@
 var example = angular.module('starter', ['ionic' , 'firebase']);
 
 
-example.factory('Items', ['$firebaseArray', function($firebaseArray) {
-  var itemsRef = new Firebase(' https://dazzling-torch-81.firebaseio.com/user1/todos');
+example.factory('Items', ['$firebaseArray', function($firebaseArray, $state) {
+
+var user;
+
+  var ref = new Firebase("https://dazzling-torch-81.firebaseio.com");
+ref.onAuth(function(authData) {
+  if (authData) {
+    console.log("Authenticated with uid:", authData.uid);
+    user = authData.uid;
+  } else {
+
+  }
+});
+
+console.log(user +" Userid");
+
+
+  var itemsRef = new Firebase(' https://dazzling-torch-81.firebaseio.com/'+user+'/todos');
   return $firebaseArray(itemsRef);
 }]);
 
